@@ -22,7 +22,7 @@ from workflow import Workflow, web
 
 ICON = 'icon.png'
 HELP_URL = 'https://github.com/clarencecastillo/alfred-powerthesaurus'
-API_URL = 'https://www.powerthesaurus.org/'
+API_URL = 'https://classic.powerthesaurus.org/'
 
 # How long to cache results for
 CACHE_MAX_AGE = 20  # seconds
