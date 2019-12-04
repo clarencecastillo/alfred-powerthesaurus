@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
-from workflow import web
-
+import requests
 import logging
 import json
 
@@ -32,7 +31,7 @@ class PowerThesaurus:
         return '{}/{}/{}'.format(self.api_url, word.replace(' ', '_'), query_type)
 
     def search(self, word, query_type):
-        r = web.get(self.build_search_url(word, query_type))
+        r = requests.get(self.build_search_url(word, query_type), headers={'user-agent': 'alfred-powerthesaurus/2.0'})
         self.logger.debug('response : {} {}'.format(r.status_code, r.url))
         r.raise_for_status()
         data = self.extract_terms(r.text)
