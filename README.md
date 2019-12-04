@@ -15,8 +15,10 @@ Primary commands:
 - `powa <word>` — Search Power Thesaurus for antonyms of `<word>`.
 
 For both primary commands:
-  - `↩` or ` ⌘+NUM` — Copy highlighted entry to the clipboard
+  - `↩` or ` ⌘+C` — Copy highlighted entry to the clipboard
   - `⌘+L` — Show full query in Alfred's Large Text window
+  - `⌘+↩` — Open highlighted entry in browser
+  - `SHIFT` — Preview highlighted entry's page using quicklook
 
 ## Results ##
 
