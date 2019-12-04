@@ -4,15 +4,26 @@
 <dict>
 	<key>bundleid</key>
 	<string>me.clarencecastillo.alfred-powerthesaurus</string>
-	<key>category</key>
-	<string>Internet</string>
 	<key>connections</key>
 	<dict>
+		<key>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>819E593B-43C3-4EBF-9000-3D3C0F5AB6D2</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>BFD7FE38-61C5-4AAB-87E4-20ADA5CBDA67</string>
+				<string>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -25,7 +36,7 @@
 	<key>createdby</key>
 	<string>Clarence Castillo</string>
 	<key>description</key>
-	<string>Search Powerthesaurus Synonymns</string>
+	<string>Search for synonyms and antonyms on powerthesaurus.org</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -45,7 +56,7 @@
 			<key>type</key>
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>BFD7FE38-61C5-4AAB-87E4-20ADA5CBDA67</string>
+			<string>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -59,19 +70,19 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>pow</string>
+				<string>pows</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<true/>
+				<false/>
 				<key>queuedelaymode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Querying Powerthesaurus.org…</string>
+				<string>Searching synonyms for '{query}'</string>
 				<key>script</key>
-				<string>/usr/bin/python powerthesaurus.py "{query}"</string>
+				<string>/usr/bin/python powerthesaurus.py "syn {query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -79,7 +90,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search Powerthesaurus</string>
+				<string>Search Powerthesaurus for Synonyms</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -92,11 +103,61 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>powa</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching antonyms for '{query}'</string>
+				<key>script</key>
+				<string>/usr/bin/python powerthesaurus.py "ant {query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search Powerthesaurus for Antonyms</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>120</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
 		<key>819E593B-43C3-4EBF-9000-3D3C0F5AB6D2</key>
 		<dict>
 			<key>xpos</key>
@@ -104,14 +165,16 @@
 			<key>ypos</key>
 			<integer>70</integer>
 		</dict>
-		<key>BFD7FE38-61C5-4AAB-87E4-20ADA5CBDA67</key>
+		<key>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</key>
 		<dict>
 			<key>xpos</key>
-			<integer>500</integer>
+			<integer>530</integer>
 			<key>ypos</key>
 			<integer>70</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>2.0</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
