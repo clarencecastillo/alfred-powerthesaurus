@@ -12,7 +12,7 @@
 Powerthesaurus API
 """
 
-from workflow import Workflow
+from workflow import Workflow3
 
 import re
 import sys
@@ -36,7 +36,6 @@ def build_cache_key(query, tags):
 
 def parse_query(raw_input):
     query_type, _, query = raw_input.strip().partition(" ")
-    query_type = { 'ant': 'antonyms', 'syn': 'synonyms' }[query_type]
     return query, query_type
 
 def format_term_result(term):
@@ -57,10 +56,7 @@ def build_item_args(term, term_url):
         'valid': True,
         'quicklookurl': term_url,
         'icon': ICON,
-        'arg': term_url,
-        'modifier_subtitles': {
-            'cmd': 'Open this term in your browser'
-        }
+        'arg': term_word
     }
 
 def main(wf):
@@ -92,10 +88,12 @@ def main(wf):
 
     for term in terms:
         term_url = pt.build_search_url(term['term'], query_type)
-        wf.add_item(**build_item_args(term, term_url))
+        item = wf.add_item(**build_item_args(term, term_url))
+        cmd_modifier = item.add_modifier('cmd', 'Open this term in your browser')
+        cmd_modifier.setvar('url', term_url)
 
     wf.send_feedback()
 
 if __name__ == '__main__':
-    wf = Workflow(help_url=HELP_URL, libraries=['./lib'])
+    wf = Workflow3(help_url=HELP_URL, libraries=['./lib'])
     sys.exit(wf.run(main))
