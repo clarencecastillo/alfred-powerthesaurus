@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>me.clarencecastillo.alfred-powerthesaurus</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</key>
@@ -18,6 +20,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DD4E372B-0316-46D9-B59B-884272644163</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>819E593B-43C3-4EBF-9000-3D3C0F5AB6D2</key>
 		<array>
@@ -26,6 +38,16 @@
 				<string>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</string>
 				<key>modifiers</key>
 				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DD4E372B-0316-46D9-B59B-884272644163</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
@@ -58,13 +80,19 @@
 			<key>uid</key>
 			<string>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -78,11 +106,11 @@
 				<key>queuedelaymode</key>
 				<integer>1</integer>
 				<key>queuemode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string>Searching synonyms for '{query}'</string>
 				<key>script</key>
-				<string>/usr/bin/python powerthesaurus.py "syn {query}"</string>
+				<string>/usr/bin/python powerthesaurus.py "synonym {query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -101,13 +129,38 @@
 			<key>uid</key>
 			<string>819E593B-43C3-4EBF-9000-3D3C0F5AB6D2</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{var:url}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>DD4E372B-0316-46D9-B59B-884272644163</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -121,11 +174,11 @@
 				<key>queuedelaymode</key>
 				<integer>1</integer>
 				<key>queuemode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string>Searching antonyms for '{query}'</string>
 				<key>script</key>
-				<string>/usr/bin/python powerthesaurus.py "ant {query}"</string>
+				<string>/usr/bin/python powerthesaurus.py "antonym {query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -144,7 +197,7 @@
 			<key>uid</key>
 			<string>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -154,23 +207,30 @@
 		<key>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>105</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>355</integer>
 		</dict>
 		<key>819E593B-43C3-4EBF-9000-3D3C0F5AB6D2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>110</integer>
 			<key>ypos</key>
-			<integer>70</integer>
+			<integer>115</integer>
+		</dict>
+		<key>DD4E372B-0316-46D9-B59B-884272644163</key>
+		<dict>
+			<key>xpos</key>
+			<integer>685</integer>
+			<key>ypos</key>
+			<integer>350</integer>
 		</dict>
 		<key>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</key>
 		<dict>
 			<key>xpos</key>
-			<integer>530</integer>
+			<integer>685</integer>
 			<key>ypos</key>
-			<integer>70</integer>
+			<integer>115</integer>
 		</dict>
 	</dict>
 	<key>version</key>

@@ -3,5 +3,7 @@ __pycache__/
 *$py.class
 
 /src/lib
+/src/workflow
+/venv
 
 .python-version
