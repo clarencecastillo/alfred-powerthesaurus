@@ -5,7 +5,7 @@ import os
 
 class PowerThesaurus:
 
-    USER_AGENT = "Alfred-Powerthesaurus/2.1.0"
+    USER_AGENT = "Alfred-Powerthesaurus/2.1.1"
     GQL_THESAURUS_QUERY = "thesaurus_query"
     GQL_SEARCH_QUERY = "search_query"
 

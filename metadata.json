@@ -4,7 +4,7 @@
     "readme" : "Search Powerthesaurus synonyms and antonyms from Alfred",
     "createdby" : "Clarence Castillo",
     "downloadurl" : "",
-    "version" : "2.1.0",
+    "version" : "2.1.1",
     "bundleid" : "me.clarencecastillo.alfred-powerthesaurus",
     "description" : "Search for synonyms and antonyms on powerthesaurus.org",
     "name" : "Powerthesaurus",

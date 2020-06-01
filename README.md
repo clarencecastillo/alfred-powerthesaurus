@@ -30,11 +30,12 @@ Use the `init.sh` script to install the required dependencies inside the `src` f
 
 ## Releases ##
 
-When preparing a new release, don't forget to:
+There's probably a smarter way to do this, but when preparing a new release, don't forget to:
 
 1. Bump `version` file
-2. Update `user-agent` version inside `src/api.py` (hopefully the devs will appreciate this)
-3. Update the exported workflow following the format `Powerthesaurus-x.x.x.alfredworkflow`
+2. Bump `user-agent` version inside `src/api.py`
+3. Bump the exported workflow following the format `Powerthesaurus-x.x.x.alfredworkflow`
+4. Bump `alfredworkflow.version` field in `metadata.json` or just re-export the entire `metadata.json`
 
 
 ## Licensing ##
