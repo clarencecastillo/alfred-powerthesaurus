@@ -5,11 +5,12 @@ import os
 
 class PowerThesaurus:
 
-    USER_AGENT = "Alfred-Powerthesaurus/2.1.1"
-    GQL_THESAURUS_QUERY = "thesaurus_query"
-    GQL_SEARCH_QUERY = "search_query"
+    VERSION = open('./version').readline()
+    GQL_THESAURUS_QUERY = 'thesaurus_query'
+    GQL_SEARCH_QUERY = 'search_query'
+    VERIFY_SSL = bool(os.getenv('ALFRED_PT_SSL_VERIFICATION'))
 
-    def __init__(self, api_url, web_url, gql_queries_dir="./gql_queries/", pos_file_path="./pos.json", logger=logging):
+    def __init__(self, api_url, web_url, gql_queries_dir='./gql_queries/', pos_file_path='./pos.json', logger=logging):
         self.api_url = api_url
         self.web_url = web_url
         self.logger = logger
@@ -22,8 +23,8 @@ class PowerThesaurus:
 
     def build_request_headers(self):
         return {
-            "user-agent": PowerThesaurus.USER_AGENT,
-            "content-type": "application/json"
+            'user-agent': 'Alfred-PowerThesaurus/' + PowerThesaurus.VERSION,
+            'content-type': 'application/json'
         }
 
     def read_pos_mapping(self, file_path):
@@ -47,31 +48,31 @@ class PowerThesaurus:
 
     def build_search_query_params(self, query):
         return {
-            "operationName": "SEARCH_QUERY",
-            "variables": {
-                "query": query
+            'operationName': 'SEARCH_QUERY',
+            'variables': {
+                'query': query
             },
-            "query": self.gql_queries[PowerThesaurus.GQL_SEARCH_QUERY]
+            'query': self.gql_queries[PowerThesaurus.GQL_SEARCH_QUERY]
         }
 
     def build_thesaurus_query_params(self, term_id, query_type):
         return {
-            "operationName": "THESAURUSES_QUERY",
-            "variables": {
-                "list": query_type.upper(),
-                "termID": term_id,
-                "sort": {
-                    "field": "RATING",
-                    "direction": "DESC"
+            'operationName': 'THESAURUSES_QUERY',
+            'variables': {
+                'list': query_type.upper(),
+                'termID': term_id,
+                'sort': {
+                    'field': 'RATING',
+                    'direction': 'DESC'
                 },
-                "limit": 50,
-                "syllables": None,
-                "query": None,
-                "posID": None,
-                "first": 50,
-                "after": ""
+                'limit': 50,
+                'syllables': None,
+                'query': None,
+                'posID': None,
+                'first': 50,
+                'after': ''
             },
-            "query": self.gql_queries[PowerThesaurus.GQL_THESAURUS_QUERY]
+            'query': self.gql_queries[PowerThesaurus.GQL_THESAURUS_QUERY]
         }
 
     def parse_thesaurus_query_response(self, response):
@@ -94,7 +95,7 @@ class PowerThesaurus:
         if not term_id:
             return []
         params = self.build_thesaurus_query_params(term_id, query_type)
-        r = requests.post(self.api_url, json=params, headers=self.request_headers, verify=False)
+        r = requests.post(self.api_url, json=params, headers=self.request_headers, verify=PowerThesaurus.VERIFY_SSL)
         self.logger.debug('thesaurus_query: {} {}'.format(r.status_code, r.url))
         r.raise_for_status()
         return self.parse_thesaurus_query_response(r.json())
@@ -108,7 +109,7 @@ class PowerThesaurus:
 
     def search_query(self, query):
         params = self.build_search_query_params(query)
-        r = requests.post(self.api_url, json=params, headers=self.request_headers, verify=False)
+        r = requests.post(self.api_url, json=params, headers=self.request_headers, verify=PowerThesaurus.VERIFY_SSL)
         self.logger.debug('search_query: {} {}'.format(r.status_code, r.url))
         r.raise_for_status()
         return self.parse_search_query_response(r.json())

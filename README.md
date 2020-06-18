@@ -28,15 +28,28 @@ Resulting synonyms or antonyms will be sequentially listed according to user rat
 
 Use the `init.sh` script to install the required dependencies inside the `src` folder. When you're ready to test or export, copy the entire `src` folder to the existing workflow directory.
 
+## Troubleshooting ##
+
+#### SSL Errors
+If you're having SSL issues, try temporarily disabling it by setting the workflow environment variable `ALFRED_PT_SSL_VERIFICATION` to `False`. This will bypass SSL verification as a workaround while waiting for the SSL certificate to be rectified. You can check Power Thesaurus's SSL certificate status [here](https://www.sslshopper.com/ssl-checker.html#hostname=api.powerthesaurus.org). Be sure to set it back to `True` when all's green.
+
+#### Other Errors
+For other errors, please open an issue describing how you got the error and together with the logs from `Alfred > Workflows > Debugging Mode` if possible. There's no proper error handling in place yet, so we'll have to troubleshoot things this way for now.
+
+
+## Related Links ##
+
+[GitHub Repository](https://github.com/clarencecastillo/alfred-powerthesaurus)
+[Alfred Forums](https://www.alfredforum.com/topic/10576-powerthesaurus-search/)
+[Packal](http://www.packal.org/workflow/powerthesaurus-search)
+
 ## Releases ##
 
 There's probably a smarter way to do this, but when preparing a new release, don't forget to:
 
 1. Bump `version` file
-2. Bump `user-agent` version inside `src/api.py`
-3. Bump the exported workflow following the format `Powerthesaurus-x.x.x.alfredworkflow`
-4. Bump `alfredworkflow.version` field in `metadata.json` or just re-export the entire `metadata.json`
-
+2. Bump the exported workflow following the format `Powerthesaurus-x.x.x.alfredworkflow`
+3. Bump `alfredworkflow.version` field in `metadata.json` or just re-export the entire `metadata.json` from `Alfred > Workflows`
 
 ## Licensing ##
 
