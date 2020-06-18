@@ -1,6 +1,6 @@
-# Powerthesaurus Search for Alfred #
+# Power Thesaurus Search for Alfred #
 
-Search for synonyms and antonyms on [Powerthesaurus.org](https://www.powerthesaurus.org) from [Alfred 4](https://www.alfredapp.com/).
+Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus.org) from [Alfred 4](https://www.alfredapp.com/).
 
 ![](demo.gif "")
 
