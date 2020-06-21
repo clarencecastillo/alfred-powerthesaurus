@@ -5,7 +5,7 @@ import os
 
 class PowerThesaurus:
 
-    VERSION = open('./version').readline()
+    VERSION = open('./version').readline().strip()
     GQL_THESAURUS_QUERY = 'thesaurus_query'
     GQL_SEARCH_QUERY = 'search_query'
     VERIFY_SSL = bool(os.getenv('ALFRED_PT_SSL_VERIFICATION'))

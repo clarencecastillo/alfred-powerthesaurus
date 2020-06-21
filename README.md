@@ -48,7 +48,7 @@ For other errors, please open an issue describing how you got the error and toge
 There's probably a smarter way to do this, but when preparing a new release, don't forget to:
 
 1. Bump `version` file
-2. Bump the exported workflow following the format `Powerthesaurus-x.x.x.alfredworkflow`
+2. Bump the exported workflow following the format `PowerThesaurus-x.x.x.alfredworkflow`
 3. Bump `alfredworkflow.version` field in `metadata.json` or just re-export the entire `metadata.json` from `Alfred > Workflows`
 
 ## Licensing ##
