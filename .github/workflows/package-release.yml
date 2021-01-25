@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+  pull_request:
+
+jobs:
+  package:
+    name: Package workflow
+    if: "!startsWith(github.event.head_commit.message, '[SKIP CI]')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Clone repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          ./init.sh
+
+      - name: Build Alfred Workflow
+        id: alfred_builder
+        uses: mperezi/build-alfred-workflow@v1
+        with:
+          workflow_dir: src
+          exclude_patterns: '*.pyc *__pycache__/*'

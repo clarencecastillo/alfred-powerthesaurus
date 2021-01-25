@@ -5,7 +5,7 @@
 	<key>bundleid</key>
 	<string>me.clarencecastillo.alfred-powerthesaurus</string>
 	<key>category</key>
-	<string>Productivity</string>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</key>
@@ -62,7 +62,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Powerthesaurus</string>
+	<string>Power Thesaurus</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -72,6 +72,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -108,7 +110,7 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string>Searching synonyms for '{query}'</string>
+				<string>Searching synonyms for '{query}'...</string>
 				<key>script</key>
 				<string>/usr/bin/python powerthesaurus.py "synonym {query}"</string>
 				<key>scriptargtype</key>
@@ -130,25 +132,6 @@
 			<string>819E593B-43C3-4EBF-9000-3D3C0F5AB6D2</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{var:url}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>DD4E372B-0316-46D9-B59B-884272644163</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -176,7 +159,7 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string>Searching antonyms for '{query}'</string>
+				<string>Searching antonyms for '{query}'...</string>
 				<key>script</key>
 				<string>/usr/bin/python powerthesaurus.py "antonym {query}"</string>
 				<key>scriptargtype</key>
@@ -199,9 +182,28 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{var:url}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>DD4E372B-0316-46D9-B59B-884272644163</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Search Powerthesaurus synonyms and antonyms from Alfred</string>
 	<key>uidata</key>
 	<dict>
 		<key>3BDFA2EA-F8AA-4E1D-BACD-9578AA20FCF0</key>
@@ -223,19 +225,26 @@
 			<key>xpos</key>
 			<integer>685</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>420</integer>
 		</dict>
 		<key>EA0FCBB9-3119-4821-A1D9-58B6780D5C37</key>
 		<dict>
 			<key>xpos</key>
 			<integer>685</integer>
 			<key>ypos</key>
-			<integer>115</integer>
+			<integer>60</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>ALFRED_PT_SSL_VERIFICATION</key>
+		<string>True</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>2.0</string>
+	<string>2.1.3</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/clarencecastillo/alfred-powerthesaurus</string>
 </dict>
 </plist>
