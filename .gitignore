@@ -1,9 +1,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
-/src/lib
-/src/workflow
-/venv
+.DS_Store
 
 .python-version
