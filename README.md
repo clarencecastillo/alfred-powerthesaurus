@@ -7,6 +7,12 @@
 - now opens both antonyms (CTRL) and synonyms (CMD) in browser
 
 ----
+<a href="https://github.com/giovannicoppola/alfred-powerthesaurus/releases/latest/">
+  
+  <img alt="Downloads"
+       src="https://img.shields.io/github/downloads/giovannicoppola/alfred-powerthesaurus/total?color=purple&label=Downloads"><br/>
+</a>
+
 
 
 Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus.org) from [Alfred 4](https://www.alfredapp.com/).
