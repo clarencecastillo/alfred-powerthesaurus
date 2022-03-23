@@ -4,7 +4,7 @@
 
 - migration to Python 3
 - caching eliminated - performance (for cached items) went from ~0.06-0.12 to ~0.4-0.5 secs per query
-- added 'open antonyms'
+- now opens both antonyms (CTRL) and synonyms (CMD) in browser
 
 ----
 
