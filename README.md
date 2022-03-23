@@ -1,5 +1,14 @@
 # Power Thesaurus Search for Alfred #
 
+## March 2022 update
+
+- migration to Python 3
+- caching eliminated - performance (for cached items) went from ~0.06-0.12 to ~0.4-0.5 secs per query
+- added 'open antonyms'
+
+----
+
+
 Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus.org) from [Alfred 4](https://www.alfredapp.com/).
 
 ![](demo.gif "")
