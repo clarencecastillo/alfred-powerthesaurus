@@ -163,6 +163,7 @@
 				<string>Searching synonyms for '{query}'</string>
 				<key>script</key>
 				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
+export PYTHONPATH="$PWD/lib"
 python3 powerthesaurus.py "synonym $1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -248,6 +249,7 @@ python3 powerthesaurus.py "synonym $1"</string>
 				<string>Searching antonyms for '{query}'</string>
 				<key>script</key>
 				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
+export PYTHONPATH="$PWD/lib"
 python3 powerthesaurus.py "antonym $1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>

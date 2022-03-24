@@ -3,7 +3,7 @@
 # giovanni from Clarence Castillo
 # Wednesday, March 23, 2022
 
-from lib import requests
+import requests
 import logging
 import json
 import os
