@@ -8,10 +8,7 @@ from socket import error as SocketError
 from socket import timeout as SocketTimeout
 
 try:
-    try:
-        import brotlicffi as brotli
-    except ImportError:
-        import brotli
+    import brotli
 except ImportError:
     brotli = None
 
