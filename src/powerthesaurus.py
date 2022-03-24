@@ -92,24 +92,26 @@ def main():
     # # Show results
     items = [build_thesaurus_item(t, query_type) for t in (thesaurus_terms or [])]
     
+    log (items)
     result = {"items": []}
+    
+    if not items:
+        result= {"items": [{
+        "title": 'No {}s found for \"{}\"'.format(query_type, query),
+        "subtitle": "Try searching for another word...",
+        "arg": "",
+        "icon": {
 
-    for item in items:
-        log(item['quicklookurl'])
-        result["items"].append(item)
+                "path": "icons/warning.png"
+            }
+        }]}
+        print (json.dumps(result))
+    else:
+        for item in items:
+            log(item['quicklookurl'])
+            result["items"].append(item)
         
-        
-    log (result)
-
-        
-    #     cmd_modifier = wf_item.add_modifier('cmd', '')
-    #     cmd_modifier.setvar('url', )
-
-    # if not items:
-    #   result["items"].append(item)  
-    #   wf.add_item('No {}s found for \"{}\"'.format(query_type, query), 'Try searching for another word...', icon=ICON)
-
-    print (json.dumps(result))
+        print (json.dumps(result))
 
 if __name__ == '__main__':
     main()
