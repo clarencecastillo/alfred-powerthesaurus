@@ -19,6 +19,8 @@ Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus
 
 Get Power Thesaurus for Alfred from [GitHub](https://github.com/giovannicoppola/alfred-powerthesaurus/releases).
 
+Version 3.1 is for Alfred 5. Use [version 3.0](https://github.com/giovannicoppola/alfred-powerthesaurus/releases/tag/v3.0) for Alfred 4
+
 ## Usage ##
 
 Primary commands:
