@@ -1,10 +1,6 @@
 # Power Thesaurus Search for Alfred #
 
-## March 2022 update
-
-- migration to Python 3
-- caching eliminated - performance (for cached items) went from ~0.06-0.12 to ~0.4-0.5 secs per query
-- now opens both antonyms (CTRL) and synonyms (CMD) in browser
+Ported to ALfred 5 and Python 3 from the original version by [@clarencecastillo](https://github.com/clarencecastillo)
 
 ----
 <a href="https://github.com/giovannicoppola/alfred-powerthesaurus/releases/latest/">
@@ -21,7 +17,7 @@ Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus
 
 ## Installation ##
 
-Get Power Thesaurus for Alfred from [GitHub](https://github.com/clarencecastillo/alfred-powerthesaurus/releases) or [Packal](http://www.packal.org/workflow/powerthesaurus-search).
+Get Power Thesaurus for Alfred from [GitHub](https://github.com/giovannicoppola/alfred-powerthesaurus/releases).
 
 ## Usage ##
 
@@ -32,16 +28,14 @@ Primary commands:
 For both primary commands:
   - `↩` or ` ⌘+C` — Copy highlighted entry to the clipboard
   - `⌘+L` — Show full query in Alfred's Large Text window
-  - `⌘+↩` — Open highlighted entry in browser
+  - CMD+enter (⌘↩️) opens synonyms in browser
+  - CTRL+enter (^↩️) opens antonyms in browser
   - `SHIFT` — Preview highlighted entry's page using quicklook
 
 ## Results ##
 
 Resulting synonyms or antonyms will be sequentially listed according to user rating.
 
-## Development ##
-
-Use the `init.sh` script to install the required dependencies inside the `src` folder. When you're ready to test or export, copy the entire `src` folder to the existing workflow directory.
 
 ## Troubleshooting ##
 
@@ -54,17 +48,18 @@ For other errors, please open an issue describing how you got the error and toge
 
 ## Related Links ##
 
-[GitHub Repository](https://github.com/clarencecastillo/alfred-powerthesaurus)
 [Alfred Forums](https://www.alfredforum.com/topic/10576-powerthesaurus-search/)
-[Packal](http://www.packal.org/workflow/powerthesaurus-search)
 
 ## Releases ##
+### November 2022 update (Version 3.1)
+- migration to Alfred 5
 
-There's probably a smarter way to do this, but when preparing a new release, don't forget to:
+### March 2022 update (Version 3.0)
 
-1. Bump `version` file
-2. Bump the exported workflow following the format `PowerThesaurus-x.x.x.alfredworkflow`
-3. Bump `alfredworkflow.version` field in `metadata.json` or just re-export the entire `metadata.json` from `Alfred > Workflows`
+- migration to Python 3
+- caching eliminated - performance (for cached items) went from ~0.06-0.12 to ~0.4-0.5 secs per query
+- now opens both antonyms (CTRL) and synonyms (CMD) in browser
+
 
 ## Licensing ##
 
