@@ -433,7 +433,7 @@ CTRL+enter (^↩️) opens antonyms in browser</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>3.1</string>
+	<string>3.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/giovannicoppola/alfred-powerthesaurus</string>
 </dict>
