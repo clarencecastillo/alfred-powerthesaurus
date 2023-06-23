@@ -11,7 +11,7 @@ Ported to ALfred 5 and Python 3 from the original version by [@clarencecastillo]
 
 
 
-Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus.org) from [Alfred 4](https://www.alfredapp.com/).
+Search for synonyms and antonyms on [Power Thesaurus](https://www.powerthesaurus.org) from [Alfred](https://www.alfredapp.com/).
 
 ![](demo.gif "")
 
