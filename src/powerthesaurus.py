@@ -1,47 +1,41 @@
-#!/usr/bin/python
-# encoding: utf-8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 #
 # Copyright © 2020 hello@clarencecastillo.me
 #
 # MIT Licence. See http://opensource.org/licenses/MIT
 #
 # Created on 2017-03-06
-#
+# Wednesday, March 23, 2022 updated to Python3 by giovanni
+# https://github.com/giovannicoppola/alfred-powerthesaurus
+# Sunny ☀️   🌡️+42°F (feels +40°F, 30%) 🌬️←0mph 🌖
 
 """
 Powerthesaurus API
 """
 
-from workflow import Workflow3
 
-import re
 import sys
-import functools
+import json
 
-UPDATE_SETTINGS = {
-    'github_slug': 'clarencecastillo/alfred-powerthesaurus'
-}
+
 
 ICON = 'icon.png'
-HELP_URL = 'https://github.com/clarencecastillo/alfred-powerthesaurus'
 API_URL = 'https://api.powerthesaurus.org'
 WEB_URL = 'https://www.powerthesaurus.org'
 
-# How long to cache results for
-CACHE_MAX_AGE = 7200  # seconds
 
-def build_cache_key(query, *tags):
-    key = query + '_' + ';'.join(tags)
-    key = key.lower()
-    key = re.sub(r'[^a-z0-9-_;\.]', '-', key)
-    key = re.sub(r'-+', '-', key)
-    return key
+def log(s, *args):
+    if args:
+        s = s % args
+    print(s, file=sys.stderr)
+
 
 def build_thesaurus_item_subtitle(term):
     pos = ' & '.join(term['parts_of_speech'])
     tags = ' '.join('#{}'.format(t) for t in term['tags'])
-    return ' | '.join([str(term['rating']), term['word']] + filter(lambda s : len(s.strip()), [pos, tags]))
-
+    return ' | '.join([str(term['rating']), term['word']] + list(filter(lambda s : len(s.strip()), [pos, tags])))
+    
 def build_thesaurus_item(term, query_type):
     return {
         'title': term['word'],
@@ -49,6 +43,10 @@ def build_thesaurus_item(term, query_type):
         'autocomplete': term['word'],
         'largetext': term['word'],
         'copytext': term['word'],
+        'variables': {
+            "myURLsyn": term['url_synonyms'],
+            "myURLanto": term['url_antonyms']
+        },
         'valid': True,
         'quicklookurl': {
             'synonym': term['url_synonyms'],
@@ -58,56 +56,64 @@ def build_thesaurus_item(term, query_type):
         'arg': term['word']
     }
 
-def main(wf):
+def main():
 
     from api import PowerThesaurus
 
-    input_text = wf.args[0]
-    wf.logger.debug('input: {!r}'.format(input_text))
-
+    input_text = sys.argv[1]
+    
     query_type, query = input_text.split(' ', 1)
 
     if not query:
-        wf.add_item('Search Powerthesaurus')
-        wf.send_feedback()
         return 0
 
-    key = build_cache_key(query, query_type)
-    wf.logger.debug('cache key: {!r} -> {!r}'.format(input_text, key))
+        
+    # initializing the pt (API) object
+    pt = PowerThesaurus(API_URL, WEB_URL, logger=log)
+    ####################################
+    
+#     ###### MAIN CALL TO THE API
+#     ##############################
+    term = pt.search_query_match(query)
+#     ##############################
+        
+    log('search: found matching term for {!r}'.format(query))  
+    
+    #log('query output {!r}'.format(term))  # just word and id
+    
+    #     # Fetch thesaurus terms from API  
+    thesaurus_terms = pt.thesaurus_query ((term or {}).get('id'), query_type)
+    thesaurus_terms = list(thesaurus_terms) #need to covert back to a list because maps is not a list in Python3, it is a <map> object
+    
+    
+    #log('thesaurus output {!r}'.format(thesaurus_terms))  
+    log('thesaurus: found {} {}s for {!r}'.format(len(thesaurus_terms), query_type, query))
 
-    pt = PowerThesaurus(API_URL, WEB_URL, logger=wf.logger)
-
-    thesaurus_terms = wf.cached_data(key, max_age=CACHE_MAX_AGE)
-
-    if thesaurus_terms is not None:
-        wf.logger.debug('cache: found {} {}s for {!r}'.format(len(thesaurus_terms), query_type, query))
-
-    if thesaurus_terms is None:
-
-        # Search term from cache or from API
-        term = pt.search_query_match(query)
-        wf.logger.debug('search: found matching term for {!r}'.format(query))
-
-        # Fetch thesaurus terms from cache or from API
-        thesaurus_terms = wf.cached_data(key, functools.partial(pt.thesaurus_query, (term or {}).get('id'), query_type), max_age=CACHE_MAX_AGE)
-        wf.logger.debug('thesaurus: found {} {}s for {!r}'.format(len(thesaurus_terms), query_type, query))
-
-    # Show results
+    # # Show results
     items = [build_thesaurus_item(t, query_type) for t in (thesaurus_terms or [])]
-    for item in items:
-        wf_item = wf.add_item(**item)
-        cmd_modifier = wf_item.add_modifier('cmd', 'Open this term in your browser')
-        cmd_modifier.setvar('url', item['quicklookurl'])
-
+    
+    log (items)
+    result = {"items": []}
+    
     if not items:
-        wf.add_item('No {}s found for \"{}\"'.format(query_type, query), 'Try searching for another word...', icon=ICON)
+        result= {"items": [{
+        "title": 'No {}s found for \"{}\"'.format(query_type, query),
+        "subtitle": "Try searching for another word...",
+        "arg": "",
+        "icon": {
 
-    wf.send_feedback()
+                "path": "icons/warning.png"
+            }
+        }]}
+        print (json.dumps(result))
+    else:
+        for item in items:
+            log(item['quicklookurl'])
+            result["items"].append(item)
+        
+        print (json.dumps(result))
 
 if __name__ == '__main__':
-    wf = Workflow3(help_url=HELP_URL, libraries=['./lib'], update_settings=UPDATE_SETTINGS)
+    main()
 
-    if wf.update_available:
-        wf.start_update()
-
-    sys.exit(wf.run(main))
+    
